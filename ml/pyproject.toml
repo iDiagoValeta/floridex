@@ -1,0 +1,27 @@
+[project]
+name = "floridex-ml"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "torch", "torchvision", "transformers", "pillow", "numpy", "scipy",
+  "pyarrow", "imagehash", "onnx", "onnxruntime", "optimum[onnx]", "tqdm",
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu129" }
+torchvision = { index = "pytorch-cu129" }
+
+[[tool.uv.index]]
+name = "pytorch-cu129"
+url = "https://download.pytorch.org/whl/cu129"
+explicit = true
+
+[tool.ruff]
+line-length = 130
+target-version = "py312"
+
+[tool.ruff.lint]
+# Pyflakes, pycodestyle, import order, bugbear and pyupgrade. Ignored: long data
+# lines, `l` for a line of a JSONL file, and zip(strict=) on lists built side by side.
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501", "E741", "B905"]
