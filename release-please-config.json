@@ -3,7 +3,6 @@
   "bump-minor-pre-major": true,
   "packages": {
     ".": {
-      "package-name": "floridex",
       "extra-files": [
         {
           "type": "json",
@@ -14,8 +13,8 @@
           "type": "generic",
           "path": "android/app/build.gradle.kts"
         }
-      ],
-      "release-as": "0.1.0"
+      ]
     }
-  }
+  },
+  "include-component-in-tag": false
 }
