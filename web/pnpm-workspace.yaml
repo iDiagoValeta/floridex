@@ -1,0 +1,4 @@
+# Native builds are not needed: the app only runs onnxruntime in the browser.
+allowBuilds:
+  onnxruntime-node: false
+  protobufjs: false

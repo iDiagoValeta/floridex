@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#306230" />
+    <meta name="description" content="Fotografía flores y captúralas en tu Floridex. Todo ocurre en tu dispositivo." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Floridex" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" href="./icono.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icono-180.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <title>Floridex</title>
+  </head>
+  <body>
+    <div class="consola">
+      <header class="carcasa-cabeza">
+        <span class="led" id="led" aria-hidden="true"></span>
+        <h1 class="logo">Floridex</h1>
+        <button class="pastilla" id="vista" type="button" aria-pressed="false" title="Cambia entre las fotos tal cual y en píxel">Vista normal</button>
+        <button class="pastilla" id="sonido" type="button" aria-pressed="true">Sonido</button>
+      </header>
+
+      <div class="bisel">
+        <div class="lcd" id="lcd" data-pantalla="lista">
+          <!-- List: every flower the model knows, numbered. -->
+          <section class="p-lista" id="p-lista" aria-label="Floridex">
+            <div class="marcador">
+              <p>Vistas <strong id="vistas">0</strong></p>
+              <p>Capturadas <strong id="capturadas">0</strong>/<span id="total">0</span></p>
+            </div>
+            <div class="progreso" id="progreso" role="progressbar" aria-label="Flores capturadas" aria-valuemin="0" aria-valuenow="0" aria-valuemax="0"><i id="progreso-barra"></i></div>
+            <div class="lista-cuerpo">
+              <aside class="previa" aria-hidden="true">
+                <div class="figura figura-grande" id="previa-figura"></div>
+                <p class="previa-num" id="previa-num"></p>
+                <p class="previa-nombre" id="previa-nombre"></p>
+              </aside>
+              <div class="lista-columna">
+                <div class="busqueda">
+                  <input class="campo" id="buscador" type="search" placeholder="Buscar nombre o número" aria-label="Buscar por nombre o número" autocomplete="off" />
+                  <button class="tecla" id="ver-filtros" type="button" aria-expanded="false" aria-controls="filtros">Filtros</button>
+                </div>
+                <div class="filtros" id="filtros" hidden>
+                  <select class="campo" id="f-estado" aria-label="Estado">
+                    <option value="">Todas</option>
+                    <option value="capturada">Capturadas</option>
+                    <option value="vista">Vistas</option>
+                    <option value="sinver">Sin ver</option>
+                  </select>
+                  <select class="campo" id="f-familia" aria-label="Familia"><option value="">Familia</option></select>
+                  <select class="campo" id="f-grupo" aria-label="Grupo">
+                    <option value="">Grupo</option>
+                    <option value="jardin">De jardín</option>
+                    <option value="silvestre">Silvestre</option>
+                  </select>
+                  <select class="campo" id="f-estacion" aria-label="Estación">
+                    <option value="">Estación</option>
+                    <option value="primavera">Primavera</option>
+                    <option value="verano">Verano</option>
+                    <option value="otoño">Otoño</option>
+                    <option value="invierno">Invierno</option>
+                  </select>
+                  <select class="campo" id="f-color" aria-label="Color">
+                    <option value="">Color</option>
+                    <option value="blanco">Blanco</option>
+                    <option value="amarillo">Amarillo</option>
+                    <option value="naranja">Naranja</option>
+                    <option value="rojo">Rojo</option>
+                    <option value="rosa">Rosa</option>
+                    <option value="morado">Morado</option>
+                    <option value="azul">Azul</option>
+                    <option value="verde">Verde</option>
+                  </select>
+                </div>
+                <p class="recuento" id="recuento" aria-live="polite"></p>
+                <ol class="lista" id="lista"></ol>
+              </div>
+            </div>
+          </section>
+
+          <!-- Entry: one flower, in pages. -->
+          <section class="p-entrada" id="p-entrada" aria-labelledby="e-nombre" hidden>
+            <div class="entrada-barra">
+              <button class="tecla" type="button" id="e-volver">‹ Lista</button>
+              <p class="entrada-num" id="e-num"></p>
+            </div>
+            <nav class="paginas" id="paginas" aria-label="Páginas de la entrada">
+              <button type="button" data-pagina="datos">Datos</button>
+              <button type="button" data-pagina="campo">Campo</button>
+              <button type="button" data-pagina="saber">Saber</button>
+              <button type="button" data-pagina="foto">Foto</button>
+            </nav>
+            <div class="entrada-cuerpo" id="e-cuerpo">
+              <p class="sello" id="e-sello" hidden></p>
+              <div class="pagina" data-pagina="datos">
+                <div class="ficha-cabeza">
+                  <div class="peana"><div class="figura figura-entrada" id="e-figura"></div></div>
+                  <div>
+                    <h2 class="entrada-nombre" id="e-nombre" tabindex="-1"></h2>
+                    <p class="cientifico" id="e-cientifico"></p>
+                    <ul class="tipos" id="e-tipos"></ul>
+                  </div>
+                </div>
+                <p class="credito" id="e-credito" hidden></p>
+                <p class="estado-entrada" id="e-estado"></p>
+                <dl class="datos" id="e-pistas"></dl>
+                <p class="texto-entrada" id="e-descripcion"></p>
+                <p class="toxica" id="e-toxicidad" hidden></p>
+              </div>
+              <div class="pagina" data-pagina="campo"><dl class="datos" id="e-campo"></dl></div>
+              <div class="pagina" data-pagina="saber"><dl class="datos" id="e-saber"></dl></div>
+              <div class="pagina" data-pagina="foto">
+                <figure class="foto-tuya" id="e-foto"></figure>
+                <p class="estado-entrada" id="e-hallazgo"></p>
+                <button class="tecla tecla-suave" type="button" id="olvidar">Quitar del Floridex</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Camera: identify a flower. -->
+          <section class="p-camara" id="p-camara" aria-label="Cámara" hidden>
+            <div class="visor" id="marco" data-modo="cerrado">
+              <canvas id="lienzo" aria-hidden="true"></canvas>
+              <div class="visor-vacio">
+                <p id="marco-texto">Enciende la cámara o sube una foto de una flor.</p>
+                <button class="tecla" id="abrir-camara" type="button">Encender cámara</button>
+              </div>
+              <p class="visor-estado" id="estado" role="status" aria-live="polite">Cargando el Floridex…</p>
+            </div>
+            <div class="camara-mandos">
+              <button class="tecla" id="c-volver" type="button">‹ Lista</button>
+              <button class="disparador" id="disparar" type="button" disabled>Capturar</button>
+              <button class="tecla" id="girar" type="button" disabled>Girar</button>
+            </div>
+          </section>
+
+          <!-- Text box: messages and choices, typed out letter by letter. -->
+          <div class="dialogo" id="dialogo" hidden>
+            <p class="dialogo-texto" id="dialogo-texto" aria-live="polite"></p>
+            <ol class="menu" id="dialogo-menu"></ol>
+            <span class="dialogo-flecha" aria-hidden="true">▼</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mandos">
+        <div class="cruceta" role="group" aria-label="Cruceta">
+          <button type="button" class="cruz arriba" data-tecla="ArrowUp" aria-label="Arriba"></button>
+          <button type="button" class="cruz izquierda" data-tecla="ArrowLeft" aria-label="Izquierda"></button>
+          <span class="cruz centro" aria-hidden="true"></span>
+          <button type="button" class="cruz derecha" data-tecla="ArrowRight" aria-label="Derecha"></button>
+          <button type="button" class="cruz abajo" data-tecla="ArrowDown" aria-label="Abajo"></button>
+        </div>
+        <div class="pastillas">
+          <button class="pastilla" id="ir-camara" type="button">Cámara</button>
+          <label class="pastilla" for="archivo">Foto<input id="archivo" type="file" accept="image/*" /></label>
+        </div>
+        <div class="botones-ab">
+          <button type="button" class="boton-redondo b" data-tecla="Escape" aria-label="Botón B, volver">B</button>
+          <button type="button" class="boton-redondo a" data-tecla="Enter" aria-label="Botón A, aceptar">A</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="pie">
+      <p>Floridex reconoce <span id="cuenta-flores">cientos de</span> flores sin conexión. Tus fotos y tu progreso se guardan solo en este dispositivo.</p>
+      <p>Fotos de referencia de iNaturalist con licencias CC0, CC BY y CC BY-SA: la autoría de cada una figura en su entrada.</p>
+      <p>Modelo entrenado con Oxford Flowers 102 y 17, tf_flowers, Swedish Flowers, iNaturalist y Pl@ntNet-300K.</p>
+    </footer>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

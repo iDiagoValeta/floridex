@@ -1,0 +1,20 @@
+{
+  "name": "florilegio-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/copy-assets.mjs && vite",
+    "build": "node scripts/copy-assets.mjs && tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/pixelify-sans": "^5.3.0",
+    "@huggingface/transformers": "^4.3.2"
+  },
+  "devDependencies": {
+    "playwright": "1.64.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
+  }
+}
