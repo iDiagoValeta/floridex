@@ -1,0 +1,8 @@
+# Model training: datasets, runs and exported models stay local.
+# The shipped model is shared/modelo/.
+ml/.venv/
+ml/data/
+ml/runs/
+ml/models/
+ml/*.log
+__pycache__/

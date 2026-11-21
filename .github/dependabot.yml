@@ -1,0 +1,39 @@
+version: 2
+updates:
+  # ci(deps): ... and build(deps): ... do not trigger a release on their own.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "kind/dependency"
+    commit-message:
+      prefix: "ci"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/web"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "kind/dependency"
+    commit-message:
+      prefix: "build"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "gradle"
+    directory: "/android"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "kind/dependency"
+    commit-message:
+      prefix: "build"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "uv"
+    directory: "/ml"
+    schedule:
+      interval: "monthly"
+    labels:
+      - "kind/dependency"
+    commit-message:
+      prefix: "build"
+    open-pull-requests-limit: 3

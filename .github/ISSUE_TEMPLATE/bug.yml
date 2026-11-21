@@ -1,0 +1,61 @@
+name: Bug
+description: Something does not work as it should
+title: "[bug] "
+labels: ["kind/bug"]
+body:
+  - type: textarea
+    id: what-happens
+    attributes:
+      label: What happens
+      description: The observed behaviour, without interpretation.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: dropdown
+    id: app
+    attributes:
+      label: App
+      options:
+        - Web
+        - Android
+        - Both
+        - Model or data scripts
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Floridex version
+      description: The release you installed (Android shows it in Settings > Apps > Floridex) or the commit you built.
+      placeholder: v0.1.0
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device and browser
+      placeholder: Pixel 8, Android 15 / iPhone 13, Safari 18 / Chrome 140 on Ubuntu 24.04
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: A screenshot or the browser console output. If the flower was misidentified, attach the photo only if you took it yourself and are happy to publish it.
+    validations:
+      required: false
