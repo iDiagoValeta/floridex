@@ -14,7 +14,8 @@
           "type": "generic",
           "path": "android/app/build.gradle.kts"
         }
-      ]
+      ],
+      "release-as": "0.1.0"
     }
   }
 }
