@@ -1,7 +1,7 @@
 """Export the trained classifier to ONNX in the layout transformers.js expects,
 quantize it to 8 bits, and check that the ONNX models score like PyTorch.
 
-Output (models/florilegio):
+Output (models/floridex):
   config.json, preprocessor_config.json
   onnx/model.onnx            fp32
   onnx/model_quantized.onnx  int8 weights, what the web and Android apps load
@@ -35,7 +35,7 @@ class Logits(torch.nn.Module):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", default="runs/dinov2-small/best")
-    ap.add_argument("--out", default="models/florilegio")
+    ap.add_argument("--out", default="models/floridex")
     ap.add_argument("--manifest", default="data/manifest.jsonl")
     ap.add_argument("--classes", default="data/classes.json")
     args = ap.parse_args()

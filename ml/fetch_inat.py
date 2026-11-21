@@ -27,7 +27,7 @@ from pathlib import Path
 OUT = Path("data/raw/inat_api")
 TARGET = 160
 LICENCIAS = "cc0,cc-by,cc-by-nc,cc-by-sa,cc-by-nc-sa,cc-by-nd,cc-by-nc-nd"
-UA = {"User-Agent": "florilegio-dataset-builder/1.0"}
+UA = {"User-Agent": "floridex-dataset-builder/1.0"}
 
 # v1 class -> iNaturalist taxon name, as iNaturalist currently spells it
 # (garden hybrids carry "×"; Anemone hupehensis is now Eriocapitella). Cultivars, mixed groups and genera that

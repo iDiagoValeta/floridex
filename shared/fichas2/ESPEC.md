@@ -1,42 +1,37 @@
-# Fichas de Florilegio (versión 2)
+# Floridex cards: writing spec (version 2)
 
-Florilegio es una app que identifica flores con una foto y muestra una ficha en castellano de España.
-Registro divulgativo, preciso, con algo de poesía pero sin cursilería. Tuteo nunca (la ficha habla de la flor).
-Ortografía española completa (tildes, eñes). Prohibido usar rayas (—), guiones medios (–) y puntos medios (·).
-No inventes datos: si dudas de un dato concreto, elige otro que sepas cierto o deja el campo en null.
+Floridex identifies flowers from a photo and shows a card in Spanish from Spain. This spec is given to whoever writes the cards (a person or a language model). The card text itself is Spanish; this document is not.
 
-## Ficha completa (para especies nuevas)
-Un objeto JSON por especie, en el MISMO orden que la entrada, con exactamente estos campos:
-- "key": copia exacta de la entrada.
-- "nombre": nombre común en castellano de España más usado. Si no hay ninguno extendido, el más usado en
-  castellano en general; y si tampoco existe, el nombre del género castellanizado (p. ej. «Ofris abejera»).
-  Dos especies distintas no pueden compartir exactamente el mismo nombre: si dos se llaman igual, distínguelas
-  («Lavanda de hoja dentada», «Lavanda fina»).
-- "otros_nombres": array de 0 a 3 nombres comunes alternativos en castellano.
-- "cientifico": nombre científico sin autoría (el de la entrada salvo error evidente).
-- "familia": familia botánica.
-- "descripcion": 2 o 3 frases para reconocerla, CENTRADAS EN LA FLOR (forma, color, tamaño, inflorescencia),
-  y luego hojas o porte.
-- "habitat": 1 frase sobre origen y dónde crece.
-- "floracion": cuándo florece en el hemisferio norte.
-- "curiosidad": 1 o 2 frases con un dato cultural, histórico, etimológico o ecológico cierto.
-- "toxicidad": null si no es tóxica conocida; si lo es, 1 frase breve de aviso (personas o mascotas).
-- "cuidados": si se cultiva como ornamental, 1 o 2 frases prácticas (luz, riego, suelo, poda); si es
-  silvestre y no se cultiva, null.
-- "simbolismo": su significado en el lenguaje de las flores o en tradiciones populares, 1 frase; null si no
-  tiene uno conocido. No lo inventes.
-- "etimologia": 1 frase sobre el origen del nombre científico o del común.
-- "usos": usos medicinales tradicionales, culinarios, melíferos u ornamentales, 1 frase; null si no tiene.
-  Los medicinales, siempre como «tradicionalmente» y sin recomendar su consumo.
-- "grupo": "jardin" si se cultiva habitualmente como ornamental; "silvestre" en caso contrario.
-- "colores": array de 2 colores hex de la flor real (pétalo dominante y acento).
+Register: informative and precise, with a touch of poetry but no sentimentality. Never address the reader (the card talks about the flower). Full Spanish spelling (accents, ñ). Never use em dashes (—), en dashes (–) or middle dots (·). Do not make facts up: if unsure about a fact, pick another you know is true or leave the field as null.
 
-## Ampliación (para especies que ya tienen ficha)
-Para cada entrada (key, nombre, cientifico, familia) devuelve SOLO:
-"key", "cuidados", "simbolismo", "etimologia", "usos", "grupo", con las mismas reglas de arriba.
+## Full card (new species)
 
-## Entrega
-Escribe el array JSON en el fichero de salida indicado. Comprueba al terminar que es JSON válido y que tiene
-tantos elementos como la entrada, con las mismas key y en el mismo orden:
-python3 -c "import json;a=json.load(open('ENTRADA'));b=json.load(open('SALIDA'));assert [x['key'] for x in a]==[x['key'] for x in b];print(len(b))"
-Responde solo con el número de fichas y las especies cuya identificación o nombre común sea dudoso.
+One JSON object per species, in the SAME order as the input, with exactly these fields:
+- `key`: exact copy of the input.
+- `nombre`: the most common Spanish (Spain) common name. If there is none, the most common one in Spanish anywhere; if there is none either, the genus name made Spanish (for example «Ofris abejera»). Two species cannot share exactly the same name: tell them apart («Lavanda de hoja dentada», «Lavanda fina»).
+- `otros_nombres`: array of 0 to 3 alternative Spanish common names.
+- `cientifico`: scientific name without authorship (the input's, unless clearly wrong).
+- `familia`: botanical family.
+- `descripcion`: 2 or 3 sentences to recognise it, FOCUSED ON THE FLOWER (shape, colour, size, inflorescence), then leaves or habit.
+- `habitat`: 1 sentence on origin and where it grows.
+- `floracion`: when it flowers in the northern hemisphere.
+- `curiosidad`: 1 or 2 sentences with a true cultural, historical, etymological or ecological fact.
+- `toxicidad`: null if not known to be toxic; otherwise 1 short warning sentence (people or pets).
+- `cuidados`: if grown as an ornamental, 1 or 2 practical sentences (light, water, soil, pruning); null if wild and not grown.
+- `simbolismo`: its meaning in the language of flowers or folk tradition, 1 sentence; null if it has no known one. Do not invent it.
+- `etimologia`: 1 sentence on the origin of the scientific or common name.
+- `usos`: traditional medicinal, culinary, melliferous or ornamental uses, 1 sentence; null if none. Medicinal uses always as «tradicionalmente», never recommending consumption.
+- `grupo`: "jardin" if commonly grown as an ornamental; "silvestre" otherwise.
+- `colores`: array of 2 hex colours of the real flower (dominant petal and accent).
+
+## Extension (species that already have a card)
+
+For each input (key, nombre, cientifico, familia) return ONLY `key`, `cuidados`, `simbolismo`, `etimologia`, `usos`, `grupo`, with the rules above.
+
+## Delivery
+
+Write the JSON array to the given output file. When done, check that it is valid JSON with as many items as the input, the same keys and the same order:
+
+    python3 -c "import json;a=json.load(open('INPUT'));b=json.load(open('OUTPUT'));assert [x['key'] for x in a]==[x['key'] for x in b];print(len(b))"
+
+Answer only with the number of cards and the species whose identification or common name is doubtful.
