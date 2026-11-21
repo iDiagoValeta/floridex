@@ -3,7 +3,6 @@ import java.util.Properties
 
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
@@ -64,7 +63,9 @@ android {
     }
     buildFeatures { compose = true }
     androidResources { noCompress += "onnx" }
-    sourceSets.getByName("main").assets.srcDir(datosCompartidos)
+    // AGP 9 rejects a Provider here; the folder is filled by copiarDatos,
+    // which preBuild already runs.
+    sourceSets.getByName("main").assets.srcDir(datosCompartidos.get().asFile)
     // One APK per CPU family: ONNX Runtime ships a native library per ABI and
     // bundling them all makes a single 109 MB file.
     splits {
