@@ -2,13 +2,11 @@
 
 A pocket flower index you fill by photographing flowers. Point the camera at a flower and Floridex names it among 516 species, registers it with its number and opens its card in Spanish: names, family, description, habitat, flowering, care, symbolism, etymology, uses and toxicity. Everything runs on the device; photos and progress never leave it.
 
-**Android**
+<p align="center"><b>Android</b></p>
+<p align="center"><img src="docs/demo-android.webp" alt="Floridex on Android: the index, picking a photo, the capture and the card"></p>
 
-![Floridex on Android: the index, picking a photo, the capture and the card](docs/demo-android.webp)
-
-**Web**
-
-![Floridex on a desktop browser: the whole console with the live camera, the capture and the card](docs/demo-web-desktop.webp)
+<p align="center"><b>Web</b></p>
+<p align="center"><img src="docs/demo-web-desktop.webp" alt="Floridex on a desktop browser: the whole console with the live camera, the capture and the card"></p>
 
 Real recordings at their own speed (idle pauses shortened): an Android emulator picking a photo, and a desktop Chromium filming a flower with its camera.
 
