@@ -30,7 +30,7 @@ android {
         minSdk = 26
         targetSdk = 34
         // release-please bumps this line; versionCode follows it (1.2.3 -> 10203).
-        versionName = "0.0.0" // x-release-please-version
+        versionName = "0.1.0" // x-release-please-version
         versionCode = versionName!!.split(".").map(String::toInt).let { (a, b, c) -> a * 10000 + b * 100 + c }.coerceAtLeast(1)
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
