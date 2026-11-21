@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Floridex: leaf-green shell, lightest green of the screen. -->
+    <color name="carcasa">#4E8A3A</color>
+    <color name="pantalla">#9BBC0F</color>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:label="Emisora de prueba">
+        <activity android:name=".Compartir" android:exported="true" android:theme="@android:style/Theme.NoDisplay" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="es.floridex.emisora.archivos"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/rutas" />
+        </provider>
+    </application>
+    <queries>
+        <package android:name="es.floridex" />
+    </queries>
+</manifest>

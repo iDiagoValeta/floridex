@@ -1,0 +1,15 @@
+.gradle/
+.kotlin/
+build/
+app/build/
+emisora/build/
+local.properties
+.idea/
+*.iml
+# Test photos from the training datasets are not published: shared/muestra.py
+# writes them (instrumented-test sample and the share-test photos).
+app/src/androidTest/assets/
+emisora/src/main/assets/
+keystore.properties
+*.jks
+*.keystore
